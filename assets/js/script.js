@@ -47,31 +47,32 @@ viewScores.addEventListener("click", function () {
 
 // stores questions as objects
 const questions = [{
-        question: "Question 1:",
-        answers: ["choice a", "choice b", "choice c", "choice d"],
-        correctAnswer: "1"
-    },
-    {
-        question: "Question 2",
-        answers: ["choice a", "choice b", "choice c", "choice d"],
-        correctAnswer: "1"
-    },
-    {
-        question: "Question 3",
-        answers: ["choice a", "choice b", "choice c", "choice d"],
-        correctAnswer: "1"
-    },
-    {
-        question: "Question 4",
-        answers: ["choice a", "choice b", "choice c", "choice d"],
-        correctAnswer: "1"
-    },
-    {
-        question: "Question 5",
-        answers: ["choice a", "choice b", "choice c", "choice d"],
-        correctAnswer: "1"
-    }
+    question: "When was JavaScript invented?",
+    answers: ["1990", "1995", "1998", "2000"],
+    correctAnswer: "2"
+},
+{
+    question: "What does 'Boolean' mean?",
+    answers: ["an object wrapper for a boolean value.", "a pasta dish", "an insult", "a program that will be able to do your job shortly"],
+    correctAnswer: "1"
+},
+{
+    question: "Question 3",
+    answers: ["choice a", "choice b", "choice c", "choice d"],
+    correctAnswer: "1"
+},
+{
+    question: "Question 4",
+    answers: ["choice a", "choice b", "choice c", "choice d"],
+    correctAnswer: "1"
+},
+{
+    question: "Question 5",
+    answers: ["choice a", "choice b", "choice c", "choice d"],
+    correctAnswer: "1"
+}
 ];
+
 
 
 function quizTime() {
@@ -223,7 +224,7 @@ userChoice.forEach(item => {
 goBackBtn.addEventListener("click", function () {
     highScores2.style.display = "none";
     starterText.style.display = "block";
-    secondsLeft = 75;
+    timeLeft = 75;
     timerEl.textContent = timeLeft + " sec";
 });
 
