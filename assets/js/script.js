@@ -53,23 +53,23 @@ const questions = [{
 },
 {
     question: "What does 'Boolean' mean?",
-    answers: ["an object wrapper for a boolean value.", "a pasta dish", "an insult", "a program that will be able to do your job shortly"],
+    answers: ["an object wrapper that contains a 'true' and a 'false'", "a pasta dish", "an insult", "a program that will be able to do your job shortly"],
     correctAnswer: "1"
 },
 {
-    question: "Question 3",
-    answers: ["choice a", "choice b", "choice c", "choice d"],
-    correctAnswer: "1"
+    question: "What are the 3 main coding languages of the web?",
+    answers: ["HTML, Java, C++", "CSS, Python, Javascript", "HTML, CSS, JavaScript", "Python, React, Javascript"],
+    correctAnswer: "3"
 },
 {
-    question: "Question 4",
-    answers: ["choice a", "choice b", "choice c", "choice d"],
-    correctAnswer: "1"
+    question: "How long did it take Brendan Eich to create JavaScript?",
+    answers: ["3 years", "10 days", "6 months", "still creating it"],
+    correctAnswer: "2"
 },
 {
-    question: "Question 5",
-    answers: ["choice a", "choice b", "choice c", "choice d"],
-    correctAnswer: "1"
+    question: "Where is JavaScript used?",
+    answers: ["browsers", "servers", "in this webpage", "all of the above"],
+    correctAnswer: "4"
 }
 ];
 

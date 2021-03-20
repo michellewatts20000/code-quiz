@@ -68,10 +68,13 @@ a:hover {
 
 
 main {
-  width:500px;
+  width:550px;
 
 }
 
+.questionHere {
+  margin-bottom: 20px;
+}
 
 /*
  * Base structure
