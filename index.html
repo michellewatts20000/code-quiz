@@ -25,7 +25,7 @@
           </h3>
           <nav class="nav nav-masthead justify-content-center">
 
-            <a id="scoresView" class="nav-link active" href="#">View High Scores</a>
+            <h3 id="scoresView" class="nav-link active"><a>Show/Hide High Scores</a></h3>
 
 
           </nav>
@@ -35,13 +35,13 @@
 
       <main role="main" class="inner cover">
         <div id="starterText">
-          <h3>Code Quiz</h3>
+          <h1>Code Quiz</h1>
           <p style="font-size:25px">Click the start button and answer as many questions as you can before the clock runs
             out! You will be
             penalised 10 seconds for every question you get wrong.</p>
-          <button type="button" id="start-timer" class="btn btn-primary">Start quiz</button>
+          <button type="button" id="start-timer" class="btn btn-primary">Start the timer</button>
         </div>
-        <div id="questions" style="display: none;">
+        <div id="questions" style="display:none;">
 
           <h2 id="questionHere">Question</h2>
           <br>
@@ -70,16 +70,18 @@
 
             </div>
 
-            <button class="btn btn-secondary" id="save">Submit</button>
+            <button class="btn btn-light" id="save">Submit</button>
             </form>
 
 
 
           </div>
         </div>
+
+        <br>
         <div id="highScores2" style="display:none;">
-          <h3>High Scores</h2>
-            <ol id="score-list">
+          <h2>High Scores</h2>
+            <ol class="list-group" id="score-list">
               <!-- <li></li> -->
             </ol>
 
