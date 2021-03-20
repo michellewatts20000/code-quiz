@@ -36,28 +36,28 @@
       <main role="main" class="inner cover">
         <div id="starterText">
           <h1>Code Quiz</h1>
-          <p style="font-size:25px">Click the start button and answer as many questions as you can before the clock runs
+          <p style="font-size:25px">Click the green button and answer as many questions as you can before the clock runs
             out! You will be
             penalised 10 seconds for every question you get wrong.</p>
-          <button type="button" id="start-timer" class="btn btn-primary">Start the timer</button>
+          <button type="button" id="start-timer" class="btn btn-success">Start the timer</button>
         </div>
         <div id="questions" style="display:none;">
 
           <h2 id="questionHere">Question</h2>
           <br>
           <ul>
-            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="1" id="answer1"></button></li>
-            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="2" id="answer2"></button></li>
-            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="3" id="answer3"></button></li>
-            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="4" id="answer4"></button></li>
+            <li class="mb-2"><button class="btn btn-info userChoice" type="button" value="1" id="answer1"></button></li>
+            <li class="mb-2"><button class="btn btn-info userChoice" type="button" value="2" id="answer2"></button></li>
+            <li class="mb-2"><button class="btn btn-info userChoice" type="button" value="3" id="answer3"></button></li>
+            <li class="mb-2"><button class="btn btn-info userChoice" type="button" value="4" id="answer4"></button></li>
 
           </ul>
 
         </div>
-        <div id="highScores" style="display:none;">
+        <div id="userResults" style="display:none;">
 
 
-          <h4 id="high"></h4>
+          <h4 id="yourScore"></h4>
 
 
           <div class="details">
@@ -79,14 +79,14 @@
         </div>
 
         <br>
-        <div id="highScores2" style="display:none;">
+        <div id="highScores" style="display:none;">
           <h2>High Scores</h2>
             <ol class="list-group" id="score-list">
               <!-- <li></li> -->
             </ol>
 
-            <button type="button" id="back-btn" class="btn btn-success">Play again</button>
-            <button type="button" id="clearscores" class="btn btn-primary">Clear scores</button>
+            <button type="button" id="back-btn" class="btn btn-primary">Play again</button>
+            <button type="button" id="clearscores" class="btn btn-danger">Clear scores</button>
 
         </div>
 

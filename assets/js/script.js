@@ -1,11 +1,10 @@
 // Access element by ID using .querySelector()
 var startButton = document.querySelector("#start-timer");
-var test = document.querySelector("#test");
 var timerEl = document.getElementById('timer');
 var starterText = document.getElementById('starterText');
 var questionsText = document.getElementById('questions');
+var userResults = document.getElementById('userResults');
 var highScores = document.getElementById('highScores');
-var highScores2 = document.getElementById('highScores2');
 var userChoice = document.querySelectorAll("button.userChoice");
 var viewScores = document.getElementById('scoresView');
 var clearScrBtn = document.querySelector("#clearscores");
@@ -36,10 +35,10 @@ var timeLeft = 75;
 startButton.addEventListener("click", quizTime)
 
 viewScores.addEventListener("click", function () {
-    if (highScores2.style.display === "none") {
-        highScores2.style.display = "block";
-    } else if (highScores2.style.display === "block") {
-        highScores2.style.display = "none";
+    if (highScores.style.display === "none") {
+        highScores.style.display = "block";
+    } else if (highScores.style.display === "block") {
+        highScores.style.display = "none";
     } else {
         return alert("No scores to show.");
     }
@@ -102,10 +101,14 @@ userChoice.forEach(item => {
     item.addEventListener('click', checkAnswer);
 });
 
+
 function checkAnswer(event) {
     event.preventDefault();
     // answer checker
-    if (questions[questionCount].correctAnswer === event.target.value) {} else if (questions[questionCount].correctAnswer !== event.target.value) {
+    if (questions[questionCount].correctAnswer === event.target.value) {
+
+        
+    } else if (questions[questionCount].correctAnswer !== event.target.value) {
         timeLeft = timeLeft - 10;
     }
 
@@ -113,6 +116,7 @@ function checkAnswer(event) {
     if (questionCount < questions.length) {
         questionCount++;
     }
+
     // when all the questions are done run the gameOver function
 
     // call setQuestion to bring in next question when any userChoice is clicked
@@ -127,16 +131,16 @@ function countdown() {
 
         if (questionCount === 5) {
             clearInterval(timerInterval);
-            highScores.style.display = "block";
+            userResults.style.display = "block";
             questionsText.style.display = "none";
-            high.innerHTML = '<p>Game Over! Your score is: ' + timeLeft + '</p>';
+            yourScore.innerHTML = '<p>Game Over! Your score is ' + timeLeft + '</p>';
         }
         
         else if (timeLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
-            highScores.style.display = "block";
+            userResults.style.display = "block";
             questionsText.style.display = "none";
-            high.innerHTML = '<p>Game Over! Your score is: ' + timeLeft + '</p>';
+            yourScore.innerHTML = '<p>Game Over! Your score is ' + timeLeft + '</p>';
 
         }
     }, 1000);
@@ -147,8 +151,8 @@ var scoreList = [];
 function addScore(event) {
     event.preventDefault();
 
-    highScores.style.display = "none";
-    highScores2.style.display = "block";
+    userResults.style.display = "none";
+    highScores.style.display = "block";
   
 
     let init = initialsInput.value.toUpperCase();
@@ -204,17 +208,12 @@ function clearScores() {
 
 // clear scores
 function showScores() {
-    highScores.style.display = "none";
-    highScores2.style.display = "block";
+    userResults.style.display = "none";
+    highScores.style.display = "block";
     starterText.style.display = "none";
 }
 
 
-
-// Check answers loop
-userChoice.forEach(item => {
-    item.addEventListener('click', checkAnswer);
-});
 
 
 
@@ -222,7 +221,7 @@ userChoice.forEach(item => {
 
 
 goBackBtn.addEventListener("click", function () {
-    highScores2.style.display = "none";
+    highScores.style.display = "none";
     starterText.style.display = "block";
     timeLeft = 75;
     timerEl.textContent = timeLeft + " sec";
