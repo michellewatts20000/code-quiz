@@ -3,27 +3,42 @@ var timerBtn = document.querySelector("#start-timer");
 var test = document.querySelector("#test");
 var startButton = document.querySelector("button");
 var timerEl = document.getElementById('timer');
-var mainEl = document.getElementById('main');
+var starterText = document.getElementById('starterText');
+var questionsText = document.getElementById('questions');
+
+//where the question and answers go
+var questionEl = document.querySelector("#questionHere");
+var answer1 = document.querySelector("#answer1");
+var answer2 = document.querySelector("#answer2");
+var answer3 = document.querySelector("#answer3");
+var answer4 = document.querySelector("#answer4");
+
+
 
 // when user clicks button the timer starts
 startButton.addEventListener("click", countdown)
 
 var questions = [{
-        title: "Question 1:",
-        choices: ["choice a", "choice b", "choice c", "choice d"],
-        answer: "choice a"
+        question: "Question 1:",
+        answers: ["choice a", "choice b", "choice c", "choice d"],
+        correctAnswer: "choice a"
     },
     {
-        title: "Question 2",
-        choices: ["choice a", "choice b", "choice c", "choice d"],
-        answer: "choice a"
+        question: "Question 2",
+        answers: ["choice a", "choice b", "choice c", "choice d"],
+        correctAnswer: "choice a"
     }
-]
+];
 
 // Timer that counts down from 5
 function countdown() {
+
+    starterText.style.display = "none";
+    questionsText.style.display = "block";
+    questionCount = 0;
     var timeLeft = 5;
 
+    
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
         // As long as the `timeLeft` is greater than 1
@@ -50,7 +65,7 @@ function countdown() {
 // Displays the message once time is out
 function displayMessage() {
     test.textContent = 'Game Over';
-
+    // test.appendChild(imgEl);
 }
 
 
@@ -58,15 +73,29 @@ function displayMessage() {
 
 
 
+
+
+
+
+
+
+
 // Create img element
-// var imgEl = document.createElement("img");
+var imgEl = document.createElement("img");
 
 // // Sets changeP to have multiple style attributes
 // timerBtn.setAttribute("style", "font-size: 20px; font-weight: bold;");
-// imgEl.setAttribute("src", "http://placekitten.com/200/300");
+imgEl.setAttribute("src", "http://placekitten.com/200/300");
 
 // // Add text to #test ID
 // test.textContent = "";
 
-// // append img to #test ID
-// test.appendChild(imgEl);
+// append img to #test ID
+
+
+// var id= 0;
+//     questionEl.textContent = questions[id].question;
+//     answer1.textContent = questions[id].answers[0];
+//     answer2.textContent = questions[id].answers[1];
+//     answer3.textContent = questions[id].answers[2];
+//     answer4.textContent = questions[id].answers[3];
