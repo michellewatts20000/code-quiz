@@ -2,11 +2,21 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  
+}
+
+
+.container {
+  margin-top:30px;
 }
 
 
 h3 {
   font-family: 'Alfa Slab One', cursive;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
 
+
+p {
+  font-family: 'Roboto', sans-serif;
 }
