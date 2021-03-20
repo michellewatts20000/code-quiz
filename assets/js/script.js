@@ -12,6 +12,11 @@ var viewScores = document.getElementById('scores');
 var initial = document.getElementById("msg");
 var saveButton = document.getElementById("save");
 
+// 
+var allPlayers = document.querySelector("#allPlayers");
+var scoreList = document.querySelector("#score-list");
+
+
 //where the question and answers go
 var questionEl = document.querySelector("#questionHere");
 var answer1 = document.querySelector("#answer1");
@@ -24,13 +29,13 @@ var timerInterval;
 var timeLeft = 55;
 var questionCount = 0;
 
-
+var allPlayers = [];
 
 // when user clicks button the timer starts
 startButton.addEventListener("click", quizTime)
 
 // when user clicks button the timer starts
-viewScores.addEventListener("click", showScores)
+viewScores.addEventListener("click", displayScores)
 
 // stores questions as objects
 var questions = [{
@@ -88,8 +93,7 @@ ansBtn.forEach(item => {
 function checkAnswer(event) {
     event.preventDefault();
     // answer checker
-    if (questions[questionCount].correctAnswer === event.target.value) {
-    } else if (questions[questionCount].correctAnswer !== event.target.value) {
+    if (questions[questionCount].correctAnswer === event.target.value) {} else if (questions[questionCount].correctAnswer !== event.target.value) {
         timeLeft = timeLeft - 10;
     }
 
@@ -97,15 +101,13 @@ function checkAnswer(event) {
     if (questionCount < questions.length) {
         questionCount++;
     }
-
-    if (questionCount === 4){
+    // when all the questions are done run the gameOver function
+    if (questionCount === 4) {
         gameOver();
     }
     // call setQuestion to bring in next question when any ansBtn is clicked
     setQuestion(questionCount);
 }
-
-
 
 
 function countdown() {
@@ -115,68 +117,83 @@ function countdown() {
 
         if (timeLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
+           
             questionsText.style.display = "none";
-            
+
         }
     }, 1000);
 }
 
 
-function showScores(event){
-    event.preventDefault();
-    questionsText.style.display = "none";
-    highScores.style.display = "block";
-    timerEl.style.display = "none";
-    starterText.style.display = "none";
-   showHighScores();
-
-}
-
-
-
-
 // Displays the message once time is out or all 5 questions have been answered
-function gameOver() {   
+function gameOver() {
+    clearInterval(timerInterval);
     high.innerHTML = '<p>Game Over! Your score is: ' + timeLeft + '</p>';
     questionsText.style.display = "none";
     highScores.style.display = "block";
     timerEl.style.display = "none";
-     
 }
 
 
 
-function saveScore() {
-    // Save related form data as an object
-    var playersDetails = {
-      score: timeLeft,
-      initial: initial.value.trim()
-    };
-    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-    localStorage.setItem("playersDetails", JSON.stringify(playersDetails));
-  }
+console.log(initial);
+var storage = [];
+var user = [];
+// User clicks save and it stores their score in local storage
+saveButton.addEventListener("click", addScore)
 
-  saveButton.addEventListener("click", function(event) {
+function addScore(event)
+
+{
     event.preventDefault();
-    saveScore();
-    showHighScores();
+    var user = {
+        initial: initial.value.trim(),
+        score: timeLeft
+      };
+    
+      localStorage.setItem("user", JSON.stringify(user));
+    
+    
+    // Save related form data as an object
+    storage.push(user)
+
+    console.log(storage);
+    // sort scores
+    storage = storage.sort((a, b) => {
+        if (a.score < b.score) {
+            return 1;
+        } else {
+            return -1;
+        }
     });
 
 
+    scoreList.innerHTML = "";
+    for (let i = 0; i < storage.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = `${storage[i].initials}: ${storage[i].score}`;
+        scoreList.append(li);
+    }
 
+    // Add to local storage
+    storeScores();
+    displayScores();
+}
 
-    function showHighScores() {
-        // Use JSON.parse() to convert text to JavaScript object
-        var lastPlayer = JSON.parse(localStorage.getItem("playersDetails"));
-        // Check if data is returned, if not exit out of the function
-        if (lastPlayer !== null) {
-        
-        document.getElementById("saved-comment").innerHTML = lastPlayer.initial;
-        document.getElementById("their-score").innerHTML = lastPlayer.score;
-        } else {
-          return;
-        }
-      }
-      
+function storeScores() {
+    localStorage.setItem("storage", JSON.stringify(storage));
+}
+
+function displayScores() {
+    // Get stored scores from localStorage
+    // Parsing the JSON string to an object
+    let storedstorage = JSON.parse(localStorage.getItem("storage"));
+
+    // If scores were retrieved from localStorage, update the storage array to it
+    if (storedstorage !== null) {
+        storage = storedstorage;
+    }
+}
+
 
 

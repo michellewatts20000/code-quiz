@@ -48,30 +48,38 @@
           </ul>
 
         </div>
-        <div id="highScores" style="display: none;">
+        <div id="highScores" style="display:none;">
 
 
           <h4 id="high"></h4>
 
-          <h2>High Scores</h2>
-          <div class="card">
-            <h2>Enter your initials</h2>
-            <form>
-              <ul>
+          <h3>High Scores</h2>
+            <div class="details">
 
-                <li>
-                  <label for="msg">Initials</label>
-                  <textarea id="msg" name="comments"></textarea>
-                </li>
-              </ul>
-              <button id="save">Submit</button>
-            </form>
-          </div>
-<h4 id="saved-comment"></h4>
-<h4 id="their-score"></h4>
+              <div class="form-group" >
+                <label for="msg">Enter your initials</label>
+
+                <input id="msg" class="form-control" type="text" name="comments" placeholder="put your initials here">
+
+              </div>
+              <button class="btn btn-secondary" id="save">Submit</button>
+              </form>
 
 
-          <button type="button" onClick="window.location.reload();" class="btn btn-primary">Play again</button>
+
+            </div>
+
+            <ol id="score-list">
+              <!-- <li></li> -->
+          </ol>
+<!-- 
+            <h4 id="saved-comment"></h4>
+            <h4 id="their-score"></h4>
+
+            <ul id="allPlayers"></ul> -->
+
+
+            <button type="button" onClick="window.location.reload();" class="btn btn-primary">Play again</button>
 
         </div>
 
