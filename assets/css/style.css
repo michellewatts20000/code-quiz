@@ -1,0 +1,12 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  
+}
+
+
+h3 {
+  font-family: 'Alfa Slab One', cursive;
+
+}
