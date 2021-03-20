@@ -9,6 +9,19 @@
   margin-top:30px;
 }
 
+#scores::after  {
+  content: "🏆";
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#timer-icon::after  {
+  content: "😬";
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+
 
 h3 {
   font-family: 'Alfa Slab One', cursive;
@@ -20,3 +33,10 @@ h3 {
 p {
   font-family: 'Roboto', sans-serif;
 }
+
+#questions ul  {
+
+  list-style: none;
+
+}
+

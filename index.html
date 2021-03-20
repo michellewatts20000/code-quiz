@@ -17,44 +17,67 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-sm">
+      <div class="col-md-4">
         <h3 id="scores"><a href="">View high scores</a></h3>
       </div>
-      <div class="col-sm">
 
-      </div>
-      <div class="col-sm">
-        <h3>Timer: <span id="timer"></span></h3>
+      <div class="col-md-4">
+        <h3 id="timer-icon">Timer: <span id="timer"></span></h3>
       </div>
     </div>
+    <br>
 
-    <div class="row">
-      <div class="col-sm">
+    <div class="row align-items-center">
 
-      </div>
-      <div class="col-sm">
+      <div class="col-md-6">
         <div id="starterText">
           <h4>Code Quiz</h4>
-          <p>Click the start button and answer as many questions as you can before the clock runs out! You will be penalised 10seconds if you get a question wrong.</p>
+          <p>Click the start button and answer as many questions as you can before the clock runs out! You will be
+            penalised 10 seconds for every question you get wrong.</p>
           <button type="button" id="start-timer" class="btn btn-primary">Start quiz</button>
         </div>
         <div id="questions" style="display: none;">
 
           <h2 id="questionHere">Question</h2>
           <ul>
-<li id="answer1"></li>
-<li id="answer2"></li>
-<li id="answer3"></li>
-<li id="answer4"></li>
+            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="1" id="answer1"></button></li>
+            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="2" id="answer2"></button></li>
+            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="3" id="answer3"></button></li>
+            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="4" id="answer4"></button></li>
 
           </ul>
-         
+
         </div>
-        <h3 id="test"><img></h3>
-      </div>
-      <div class="col-sm">
+        <div id="highScores" style="display: none;">
+
+
+          <h4 id="high"></h4>
+
+          <h2>High Scores</h2>
+          <div class="card">
+            <h2>Enter your initials</h2>
+            <form>
+              <ul>
+
+                <li>
+                  <label for="msg">Initials</label>
+                  <textarea id="msg" name="comments"></textarea>
+                </li>
+              </ul>
+              <button id="save">Submit</button>
+            </form>
+          </div>
+<h4 id="saved-comment"></h4>
+<h4 id="their-score"></h4>
+
+
+          <button type="button" onClick="window.location.reload();" class="btn btn-primary">Play again</button>
+
+        </div>
+
 
       </div>
+
     </div>
   </div>
 
