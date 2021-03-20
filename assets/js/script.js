@@ -5,16 +5,20 @@ var timerEl = document.getElementById('timer');
 var starterText = document.getElementById('starterText');
 var questionsText = document.getElementById('questions');
 var highScores = document.getElementById('highScores');
+var highScores2 = document.getElementById('highScores2');
 var ansBtn = document.querySelectorAll("button.ansBtn");
 var viewScores = document.getElementById('scores');
+var clearScrBtn = document.querySelector("#clearscores");
+
+var goBackBtn = document.querySelector("#back-btn");
 
 // for local storage
-var initial = document.getElementById("msg");
+var initialsInput = document.getElementById("msg");
 var saveButton = document.getElementById("save");
 
 // 
 var allPlayers = document.querySelector("#allPlayers");
-var scoreList = document.querySelector("#score-list");
+var scoreList2 = document.querySelector("#score-list");
 
 
 //where the question and answers go
@@ -27,7 +31,7 @@ var answer4 = document.querySelector("#answer4");
 
 var timerInterval;
 var timeLeft = 55;
-var questionCount = 0;
+
 
 var allPlayers = [];
 
@@ -35,10 +39,10 @@ var allPlayers = [];
 startButton.addEventListener("click", quizTime)
 
 // when user clicks button the timer starts
-viewScores.addEventListener("click", displayScores)
+viewScores.addEventListener("click", addScore)
 
 // stores questions as objects
-var questions = [{
+const questions = [{
         question: "Question 1:",
         answers: ["choice a", "choice b", "choice c", "choice d"],
         correctAnswer: "1"
@@ -69,7 +73,7 @@ var questions = [{
 function quizTime() {
     starterText.style.display = "none";
     questionsText.style.display = "block";
-
+    questionCount = 0;
     // start the timer
     countdown();
     setQuestion(questionCount);
@@ -84,6 +88,9 @@ function setQuestion(id) {
         answer4.textContent = questions[id].answers[3];
     }
 }
+
+saveButton.addEventListener("click", addScore);
+
 
 // when the user clicks an answer for a question run the checkanswer function
 ansBtn.forEach(item => {
@@ -102,9 +109,7 @@ function checkAnswer(event) {
         questionCount++;
     }
     // when all the questions are done run the gameOver function
-    if (questionCount === 4) {
-        gameOver();
-    }
+
     // call setQuestion to bring in next question when any ansBtn is clicked
     setQuestion(questionCount);
 }
@@ -115,64 +120,49 @@ function countdown() {
         timeLeft--;
         timerEl.textContent = timeLeft + " sec";
 
-        if (timeLeft === 0 || questionCount === questions.length) {
+        if (questionCount === 5) {
             clearInterval(timerInterval);
-           
+            highScores.style.display = "block";
             questionsText.style.display = "none";
+            high.innerHTML = '<p>Game Over! Your score is: ' + timeLeft + '</p>';
+        }
+        
+        else if (timeLeft === 0 || questionCount === questions.length) {
+            clearInterval(timerInterval);
+            highScores.style.display = "block";
+            questionsText.style.display = "none";
+            high.innerHTML = '<p>Game Over! Your score is: ' + timeLeft + '</p>';
 
         }
     }, 1000);
 }
 
+var scoreList = [];
 
-// Displays the message once time is out or all 5 questions have been answered
-function gameOver() {
-    clearInterval(timerInterval);
-    high.innerHTML = '<p>Game Over! Your score is: ' + timeLeft + '</p>';
-    questionsText.style.display = "none";
-    highScores.style.display = "block";
-    timerEl.style.display = "none";
-}
-
-
-
-console.log(initial);
-var storage = [];
-var user = [];
-// User clicks save and it stores their score in local storage
-saveButton.addEventListener("click", addScore)
-
-function addScore(event)
-
-{
+function addScore(event) {
     event.preventDefault();
-    var user = {
-        initial: initial.value.trim(),
-        score: timeLeft
-      };
-    
-      localStorage.setItem("user", JSON.stringify(user));
-    
-    
-    // Save related form data as an object
-    storage.push(user)
 
-    console.log(storage);
+    highScores.style.display = "none";
+    highScores2.style.display = "block";
+  
+
+    let init = initialsInput.value.toUpperCase();
+    scoreList.push({ initials: init, score: timeLeft });
+
     // sort scores
-    storage = storage.sort((a, b) => {
+    scoreList = scoreList.sort((a, b) => {
         if (a.score < b.score) {
-            return 1;
+          return 1;
         } else {
-            return -1;
+          return -1;
         }
-    });
-
-
-    scoreList.innerHTML = "";
-    for (let i = 0; i < storage.length; i++) {
+      });
+    
+    scoreList2.innerHTML="";
+    for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
-        li.textContent = `${storage[i].initials}: ${storage[i].score}`;
-        scoreList.append(li);
+        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
+        scoreList2.append(li);
     }
 
     // Add to local storage
@@ -181,19 +171,45 @@ function addScore(event)
 }
 
 function storeScores() {
-    localStorage.setItem("storage", JSON.stringify(storage));
+    localStorage.setItem("scoreList", JSON.stringify(scoreList));
 }
 
 function displayScores() {
     // Get stored scores from localStorage
     // Parsing the JSON string to an object
-    let storedstorage = JSON.parse(localStorage.getItem("storage"));
+    let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
-    // If scores were retrieved from localStorage, update the storage array to it
-    if (storedstorage !== null) {
-        storage = storedstorage;
+    // If scores were retrieved from localStorage, update the scorelist array to it
+    if (storedScoreList !== null) {
+        scoreList = storedScoreList;
     }
 }
 
+// clear scores
+function clearScores() {
+    localStorage.clear();
+    scoreListEl.innerHTML="";
+}
 
+
+
+// Check answers loop
+ansBtn.forEach(item => {
+    item.addEventListener('click', checkAnswer);
+});
+
+
+
+
+
+// Clear the scores
+clearScrBtn.addEventListener("click", clearScores);
+
+
+goBackBtn.addEventListener("click", function () {
+    highScores2.style.display = "none";
+    starterText.style.display = "block";
+    secondsLeft = 75;
+    timerEl.textContent = timeLeft + " sec";
+});
 
