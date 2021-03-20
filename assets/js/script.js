@@ -6,8 +6,8 @@ var starterText = document.getElementById('starterText');
 var questionsText = document.getElementById('questions');
 var highScores = document.getElementById('highScores');
 var highScores2 = document.getElementById('highScores2');
-var ansBtn = document.querySelectorAll("button.ansBtn");
-var viewScores = document.getElementById('scores');
+var userChoice = document.querySelectorAll("button.userChoice");
+var viewScores = document.getElementById('scoresView');
 var clearScrBtn = document.querySelector("#clearscores");
 
 var goBackBtn = document.querySelector("#back-btn");
@@ -30,16 +30,20 @@ var answer4 = document.querySelector("#answer4");
 
 
 var timerInterval;
-var timeLeft = 55;
-
-
-var allPlayers = [];
+var timeLeft = 75;
 
 // when user clicks button the timer starts
 startButton.addEventListener("click", quizTime)
 
-// when user clicks button the timer starts
-viewScores.addEventListener("click", addScore)
+viewScores.addEventListener("click", function () {
+    if (highScores2.style.display === "none") {
+        highScores2.style.display = "block";
+    } else if (highScores2.style.display === "block") {
+        highScores2.style.display = "none";
+    } else {
+        return alert("No scores to show.");
+    }
+});
 
 // stores questions as objects
 const questions = [{
@@ -93,7 +97,7 @@ saveButton.addEventListener("click", addScore);
 
 
 // when the user clicks an answer for a question run the checkanswer function
-ansBtn.forEach(item => {
+userChoice.forEach(item => {
     item.addEventListener('click', checkAnswer);
 });
 
@@ -110,7 +114,7 @@ function checkAnswer(event) {
     }
     // when all the questions are done run the gameOver function
 
-    // call setQuestion to bring in next question when any ansBtn is clicked
+    // call setQuestion to bring in next question when any userChoice is clicked
     setQuestion(questionCount);
 }
 
@@ -185,25 +189,35 @@ function displayScores() {
     }
 }
 
+
+
+// Clear the scores
+clearScrBtn.addEventListener("click", clearScores);
+
 // clear scores
 function clearScores() {
     localStorage.clear();
-    scoreListEl.innerHTML="";
+    scoreList2.innerHTML="";
+}
+
+
+// clear scores
+function showScores() {
+    highScores.style.display = "none";
+    highScores2.style.display = "block";
+    starterText.style.display = "none";
 }
 
 
 
 // Check answers loop
-ansBtn.forEach(item => {
+userChoice.forEach(item => {
     item.addEventListener('click', checkAnswer);
 });
 
 
 
 
-
-// Clear the scores
-clearScrBtn.addEventListener("click", clearScores);
 
 
 goBackBtn.addEventListener("click", function () {

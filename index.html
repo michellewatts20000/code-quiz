@@ -18,7 +18,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h3 id="scores"><a href="">View high scores</a></h3>
+        <button class="btn btn-warning" id="scoresView">View high scores</button>
       </div>
 
       <div class="col-md-4">
@@ -40,10 +40,10 @@
 
           <h2 id="questionHere">Question</h2>
           <ul>
-            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="1" id="answer1"></button></li>
-            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="2" id="answer2"></button></li>
-            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="3" id="answer3"></button></li>
-            <li class="mb-3"><button class="btn btn-success ansBtn" type="button" value="4" id="answer4"></button></li>
+            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="1" id="answer1"></button></li>
+            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="2" id="answer2"></button></li>
+            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="3" id="answer3"></button></li>
+            <li class="mb-3"><button class="btn btn-info userChoice" type="button" value="4" id="answer4"></button></li>
 
           </ul>
 
@@ -53,19 +53,17 @@
 
           <h4 id="high"></h4>
 
-          <h3>High Scores</h2>
+          
             <div class="details">
 
               <div class="form-group">
                 <label>Enter your initials</label>
 
-                <input id="msg" class="form-control" type="text" name="comments" placeholder="put your initials here">
-                <!-- <div class="input-group">
-                  <label for="email">Initials</label>
-                  <input type="text" name="initials" id="msg" placeholder="" />
-                </div> -->
+                <input id="msg" class="form-control" type="text" name="comments" placeholder="">
+              
 
               </div>
+              
               <button class="btn btn-secondary" id="save">Submit</button>
               </form>
 
@@ -74,16 +72,11 @@
             </div>
         </div>
         <div id="highScores2" style="display:none;">
+          <h3>High Scores</h2>
           <ol id="score-list">
             <!-- <li></li> -->
           </ol>
-          <!-- 
-            <h4 id="saved-comment"></h4>
-            <h4 id="their-score"></h4>
-
-            <ul id="allPlayers"></ul> -->
-
-
+         
           <button type="button" id="back-btn" class="btn btn-success">Play again</button>
           <button type="button" id="clearscores" class="btn btn-primary">Clear scores</button>
 
