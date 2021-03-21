@@ -1,5 +1,5 @@
 // array to store user score and initials
-var scoreList = [];
+var scoreList = JSON.parse(localStorage.getItem("scoreList")) || []
 
 // Access element by ID using .querySelector()
 var startButton = document.querySelector("#start-timer");
@@ -42,10 +42,10 @@ viewScores.addEventListener("click", checkif)
 
 
 function checkif(){
-    if (!initialsInput.value){
-        alert("There are no high scores yet!")
-        return;
-    }
+    // if (!initialsInput.value){
+    //     alert("There are no high scores yet!")
+    //     return;
+    // }
 
 if(starterText.style.display === "block"){
     again.style.display = "none";
@@ -216,20 +216,20 @@ function storeScores() {
     localStorage.setItem("scoreList", JSON.stringify(scoreList));
 }
 
-function displayScores() {
-    // Get stored scores from localStorage
-    hs.style.display = "block";
+// function displayScores() {
+//     // Get stored scores from localStorage
+//     hs.style.display = "block";
     
-    // Parsing the JSON string to an object
-    let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+//     // Parsing the JSON string to an object
+//     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
-    // If scores were retrieved from localStorage, update the scorelist array to it
-    if (storedScoreList !== null) {
-        scoreList = storedScoreList;
-    }
+//     // If scores were retrieved from localStorage, update the scorelist array to it
+//     if (storedScoreList !== null) {
+//         scoreList = storedScoreList;
+//     }
 
    
-}
+// }
 
 
 
