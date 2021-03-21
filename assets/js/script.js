@@ -46,33 +46,31 @@ viewScores.addEventListener("click", function () {
 
 // stores questions as objects
 const questions = [{
-    question: "When was JavaScript invented?",
-    answers: ["1990", "1995", "1998", "2000"],
-    correctAnswer: "2"
-},
-{
-    question: "What does 'Boolean' mean?",
-    answers: ["an object wrapper that contains a 'true' and a 'false'", "a pasta dish", "an insult", "a program that will be able to do your job shortly"],
-    correctAnswer: "1"
-},
-{
-    question: "What are the 3 main coding languages of the web?",
-    answers: ["HTML, Java, C++", "CSS, Python, Javascript", "HTML, CSS, JavaScript", "Python, React, Javascript"],
-    correctAnswer: "3"
-},
-{
-    question: "How long did it take Brendan Eich to create JavaScript?",
-    answers: ["3 years", "10 days", "6 months", "still creating it"],
-    correctAnswer: "2"
-},
-{
-    question: "Where is JavaScript used?",
-    answers: ["browsers", "servers", "in this webpage", "all of the above"],
-    correctAnswer: "4"
-}
+        question: "When was JavaScript invented?",
+        answers: ["1990", "1995", "1998", "2000"],
+        correctAnswer: "2"
+    },
+    {
+        question: "What does 'Boolean' mean?",
+        answers: ["an object wrapper that contains a 'true' and a 'false'", "a pasta dish", "an insult", "a program that will be able to do your job shortly"],
+        correctAnswer: "1"
+    },
+    {
+        question: "What are the 3 main coding languages of the web?",
+        answers: ["HTML, Java, C++", "CSS, Python, Javascript", "HTML, CSS, JavaScript", "Python, React, Javascript"],
+        correctAnswer: "3"
+    },
+    {
+        question: "How long did it take Brendan Eich to create JavaScript?",
+        answers: ["3 years", "10 days", "6 months", "still creating it"],
+        correctAnswer: "2"
+    },
+    {
+        question: "Where is JavaScript used?",
+        answers: ["browsers", "servers", "in this webpage", "all of the above"],
+        correctAnswer: "4"
+    }
 ];
-
-
 
 function quizTime() {
     starterText.style.display = "none";
@@ -93,7 +91,20 @@ function setQuestion(id) {
     }
 }
 
-saveButton.addEventListener("click", addScore);
+
+// make sure user enters their intials
+
+saveButton.addEventListener("click", function () {
+    if (!initialsInput.value) {
+        alert("you need to enter your initials!")
+    } 
+    else {
+        addScore();  
+    }
+});
+
+
+
 
 
 // when the user clicks an answer for a question run the checkanswer function
@@ -107,7 +118,7 @@ function checkAnswer(event) {
     // answer checker
     if (questions[questionCount].correctAnswer === event.target.value) {
 
-        
+
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
         timeLeft = timeLeft - 10;
     }
@@ -134,9 +145,7 @@ function countdown() {
             userResults.style.display = "block";
             questionsText.style.display = "none";
             yourScore.innerHTML = '<p>Game Over! Your score is ' + timeLeft + '</p>';
-        }
-        
-        else if (timeLeft === 0 || questionCount === questions.length) {
+        } else if (timeLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
             userResults.style.display = "block";
             questionsText.style.display = "none";
@@ -148,26 +157,30 @@ function countdown() {
 
 var scoreList = [];
 
-function addScore(event) {
-    event.preventDefault();
+function addScore() {
+    // event.preventDefault();
 
     userResults.style.display = "none";
     highScores.style.display = "block";
-  
+
+
 
     let init = initialsInput.value.toUpperCase();
-    scoreList.push({ initials: init, score: timeLeft });
+    scoreList.push({
+        initials: init,
+        score: timeLeft
+    });
 
     // sort scores
     scoreList = scoreList.sort((a, b) => {
         if (a.score < b.score) {
-          return 1;
+            return 1;
         } else {
-          return -1;
+            return -1;
         }
-      });
-    
-    scoreList2.innerHTML="";
+    });
+
+    scoreList2.innerHTML = "";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
@@ -202,7 +215,7 @@ clearScrBtn.addEventListener("click", clearScores);
 // clear scores
 function clearScores() {
     localStorage.clear();
-    scoreList2.innerHTML="";
+    scoreList2.innerHTML = "";
 }
 
 
@@ -226,4 +239,3 @@ goBackBtn.addEventListener("click", function () {
     timeLeft = 75;
     timerEl.textContent = timeLeft + " sec";
 });
-
