@@ -46,7 +46,7 @@ viewScores.addEventListener("click", checkif)
 
 
 function checkif() {
-    if ((localStorage.getItem("scoreList") === null)) {
+    if (localStorage.getItem("scoreList") === null) {
         alert("There are no high scores yet!")
         return;
     }
@@ -140,27 +140,39 @@ userChoice.forEach(item => {
 
 function checkAnswer(event) {
     event.preventDefault();
-    // answer checker
-    if (questions[questionCount].correctAnswer === event.target.value) {
-        validator.style.display = "block";
-        validator.style.color = "rgb(27, 232, 16)";
-        validator.textContent = "You got it right!";
+    console.log(questionCount);
+   
+    if (questionCount <= questions.length - 1) {
 
-    } else if (questions[questionCount].correctAnswer !== event.target.value) {
-        validator.style.display = "block";
-        validator.style.color = "red";
-        validator.textContent = "You got it wrong!";
-        timeLeft = timeLeft - 10;
+
+        // answer checker
+        if (questions[questionCount].correctAnswer === event.target.value) {
+            validator.style.display = "block";
+            validator.style.color = "rgb(27, 232, 16)";
+            validator.textContent = "You got it right!";
+
+        } else if (questions[questionCount].correctAnswer !== event.target.value) {
+            validator.style.display = "block";
+            validator.style.color = "red";
+            validator.textContent = "You got it wrong!";
+            timeLeft = timeLeft - 10;
+        }
+
+        // increment so the questions index is increased
+        if (questionCount < questions.length) {
+            questionCount++;
+        }
+
+
+        // call setQuestion to bring in next question when any userChoice is clicked
+        setQuestion(questionCount);
     }
-
-    // increment so the questions index is increased
-    if (questionCount < questions.length) {
-        questionCount++;
-    }
-
-
-    // call setQuestion to bring in next question when any userChoice is clicked
-    setQuestion(questionCount);
+    else {
+        clearInterval(timerInterval);
+        userResults.style.display = "block";
+        questionsText.style.display = "none";
+        yourScore.innerHTML = '<p>Game Over! Your score is ' + timeLeft + '</p>';
+    } 
 }
 
 
@@ -169,12 +181,7 @@ function countdown() {
         timeLeft--;
         timerEl.textContent = timeLeft + " sec";
 
-        if (questionCount === 5) {
-            clearInterval(timerInterval);
-            userResults.style.display = "block";
-            questionsText.style.display = "none";
-            yourScore.innerHTML = '<p>Game Over! Your score is ' + timeLeft + '</p>';
-        } else if (timeLeft <= 0 || questionCount === questions.length) {
+        if (timeLeft <= 0 || questionCount === questions.length - 1) {
             clearInterval(timerInterval);
             userResults.style.display = "block";
             questionsText.style.display = "none";
