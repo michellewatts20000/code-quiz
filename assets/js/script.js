@@ -42,10 +42,10 @@ viewScores.addEventListener("click", checkif)
 
 
 function checkif() {
-    // if (!storedScoreList){
-    //     alert("There are no high scores yet!")
-    //     return;
-    // }
+    if (scoreList == null){
+        alert("There are no high scores yet!")
+        return;
+    }
 
     if (starterText.style.display === "block") {
         again.style.display = "none";
@@ -93,6 +93,7 @@ const questions = [{
 
 function quizTime() {
     starterText.style.display = "none";
+    validator.style.display = "none";
     questionsText.style.display = "block";
     questionCount = 0;
     // start the timer
