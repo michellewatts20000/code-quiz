@@ -42,7 +42,7 @@ viewScores.addEventListener("click", checkif)
 
 
 function checkif() {
-    // if (storedScoreList === ""){
+    // if (!storedScoreList){
     //     alert("There are no high scores yet!")
     //     return;
     // }
@@ -180,6 +180,8 @@ function addScore() {
     userResults.style.display = "none";
     highScores.style.display = "block";
     again.style.display = "inline";
+    hs.style.display = "block";
+    clearScrBtn.style.display = "inline";
 
     var init = initialsInput.value.toUpperCase();
     scoreList.push({
@@ -225,8 +227,10 @@ function displayScores() {
         let li = document.createElement("li");
         li.textContent = `${storedScoreList[i].initials} ${storedScoreList[i].score}`;
         scoreListShow.append(li);
-
         li.classList.add("style-list");
+    }
+    if (storedScoreList !== null) {
+        scoreList = storedScoreList;
     }
 }
 
@@ -240,8 +244,10 @@ function clearScores() {
     localStorage.clear();
     scoreListShow.innerHTML = "";
     scoreList = [];
-    // clearscores.style.display = "none";
-    // hs.style.display = "none";
+    clearscores.style.display = "none";
+    hs.style.display = "none";
+    again.style.display = "none";
+    starterText.style.display = "block";
 }
 
 
