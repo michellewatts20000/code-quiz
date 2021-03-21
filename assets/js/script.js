@@ -1,5 +1,5 @@
 // array to store user score and initials
-var scoreList = JSON.parse(localStorage.getItem("scoreList")) || []
+var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
 
 // Access element by ID using .querySelector()
 var startButton = document.querySelector("#start-timer");
@@ -239,18 +239,13 @@ clearScrBtn.addEventListener("click", clearScores);
 function clearScores() {
     localStorage.clear();
     scoreListShow.innerHTML = "";
-    initialsInput.value = "";
+    scoreList = [];
     // clearscores.style.display = "none";
     // hs.style.display = "none";
 }
 
 
-// clear scores
-function showScores() {
-    userResults.style.display = "none";
-    highScores.style.display = "block";
-    starterText.style.display = "none";
-}
+
 
 again.addEventListener("click", function () {
     highScores.style.display = "none";
