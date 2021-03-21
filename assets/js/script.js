@@ -141,7 +141,7 @@ userChoice.forEach(item => {
 function checkAnswer(event) {
     event.preventDefault();
     console.log(questionCount);
-   
+
     if (questionCount <= questions.length - 1) {
 
 
@@ -166,13 +166,12 @@ function checkAnswer(event) {
 
         // call setQuestion to bring in next question when any userChoice is clicked
         setQuestion(questionCount);
-    }
-    else {
+    } else {
         clearInterval(timerInterval);
         userResults.style.display = "block";
         questionsText.style.display = "none";
         yourScore.innerHTML = '<p>Game Over! Your score is ' + timeLeft + '</p>';
-    } 
+    }
 }
 
 
@@ -181,7 +180,7 @@ function countdown() {
         timeLeft--;
         timerEl.textContent = timeLeft + " sec";
 
-        if (timeLeft <= 0 || questionCount === questions.length - 1) {
+        if (timeLeft <= 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
             userResults.style.display = "block";
             questionsText.style.display = "none";
