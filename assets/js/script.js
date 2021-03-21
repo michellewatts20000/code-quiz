@@ -6,6 +6,7 @@ var questionsText = document.getElementById('questions');
 var userResults = document.getElementById('userResults');
 var highScores = document.getElementById('highScores');
 var userChoice = document.querySelectorAll("button.userChoice");
+var listStyle = document.querySelectorAll("li");
 var viewScores = document.getElementById('scoresView');
 var clearScrBtn = document.querySelector("#clearscores");
 
@@ -16,8 +17,8 @@ var initialsInput = document.getElementById("msg");
 var saveButton = document.getElementById("save");
 
 // 
-var allPlayers = document.querySelector("#allPlayers");
-var scoreList2 = document.querySelector("#score-list");
+
+var scoreListShow = document.querySelector("#score-list");
 
 
 //where the question and answers go
@@ -180,11 +181,14 @@ function addScore() {
         }
     });
 
-    scoreList2.innerHTML = "";
+
+    scoreListShow.innerHTML = "";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
-        scoreList2.append(li);
+        scoreListShow.append(li);
+        
+        li.classList.add("style-list");
     }
 
     // Add to local storage
@@ -215,7 +219,7 @@ clearScrBtn.addEventListener("click", clearScores);
 // clear scores
 function clearScores() {
     localStorage.clear();
-    scoreList2.innerHTML = "";
+    scoreListShow.innerHTML = "";
 }
 
 
@@ -226,16 +230,11 @@ function showScores() {
     starterText.style.display = "none";
 }
 
-
-
-
-
-
-
-
 goBackBtn.addEventListener("click", function () {
     highScores.style.display = "none";
     starterText.style.display = "block";
     timeLeft = 75;
     timerEl.textContent = timeLeft + " sec";
 });
+
+
