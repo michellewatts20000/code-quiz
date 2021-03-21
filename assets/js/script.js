@@ -37,6 +37,9 @@ var timeLeft = 60;
 
 // when user clicks button the timer starts
 startButton.addEventListener("click", quizTime)
+
+
+
 viewScores.addEventListener("click", checkif)
 
 
@@ -225,6 +228,11 @@ function displayScores() {
 
     // Parsing the JSON string to an object
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+
+    if(storedScoreList === null){
+        return;
+    }
+
     for (let i = 0; i < storedScoreList.length; i++) {
         let li = document.createElement("li");
         li.textContent = `${storedScoreList[i].initials} ${storedScoreList[i].score}`;
