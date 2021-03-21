@@ -219,6 +219,7 @@ function storeScores() {
 function displayScores() {
     // Get stored scores from localStorage
     hs.style.display = "block";
+    
     // Parsing the JSON string to an object
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
@@ -232,17 +233,17 @@ function displayScores() {
 
 
 
-// Clear the scores
-clearScrBtn.addEventListener("click", clearScores);
+// // Clear the scores
+// clearScrBtn.addEventListener("click", clearScores);
 
-// clear scores
-function clearScores() {
-    localStorage.clear();
-    scoreListShow.innerHTML = "";
-    initialsInput.innerHTML = "";
-    clearscores.style.display = "none";
-    hs.style.display = "none";
-}
+// // clear scores
+// function clearScores() {
+//     localStorage.clear();
+//     scoreListShow.innerHTML = "";
+//     initialsInput.value = "";
+//     clearscores.style.display = "none";
+//     hs.style.display = "none";
+// }
 
 
 // clear scores
