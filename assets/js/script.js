@@ -96,6 +96,7 @@ function quizTime() {
     validator.style.display = "none";
     questionsText.style.display = "block";
     questionCount = 0;
+    timeLeft = 75;
     // start the timer
     countdown();
     setQuestion(questionCount);
