@@ -1,3 +1,6 @@
+// array to store user score and initials
+var scoreList = [];
+
 // Access element by ID using .querySelector()
 var startButton = document.querySelector("#start-timer");
 var timerEl = document.getElementById('timer');
@@ -33,15 +36,21 @@ var timeLeft = 75;
 // when user clicks button the timer starts
 startButton.addEventListener("click", quizTime)
 
+
 viewScores.addEventListener("click", function () {
     if (highScores.style.display === "none") {
         highScores.style.display = "block";
     } else if (highScores.style.display === "block") {
         highScores.style.display = "none";
-    } else {
+    } else if (!scoreList.value){
+        alert("No scores to show.");
+    }
+    
+    else {
         return alert("No scores to show.");
     }
 });
+
 
 // stores questions as objects
 const questions = [{
@@ -95,9 +104,8 @@ function setQuestion(i) {
 saveButton.addEventListener("click", function () {
     if (!initialsInput.value) {
         alert("you need to enter your initials!")
-    } 
-    else {
-        addScore();  
+    } else {
+        addScore();
     }
 });
 
@@ -113,12 +121,12 @@ function checkAnswer(event) {
     // answer checker
     if (questions[questionCount].correctAnswer === event.target.value) {
         validator.style.display = "block";
-        validator.style.color = "green"; 
+        validator.style.color = "green";
         validator.textContent = "You got it right!"
 
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
         validator.style.display = "block";
-        validator.style.color = "red"; 
+        validator.style.color = "red";
         validator.textContent = "You got it wrong!"
         timeLeft = timeLeft - 10;
     }
@@ -155,7 +163,7 @@ function countdown() {
     }, 1000);
 }
 
-var scoreList = [];
+
 
 function addScore() {
     // event.preventDefault();
@@ -183,7 +191,7 @@ function addScore() {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
         scoreListShow.append(li);
-        
+
         li.classList.add("style-list");
     }
 
@@ -228,10 +236,8 @@ function showScores() {
 
 again.addEventListener("click", function () {
     highScores.style.display = "none";
-   validator.style.display = "none";
+    validator.style.display = "none";
     starterText.style.display = "block";
     timeLeft = 75;
     timerEl.textContent = timeLeft + " sec";
 });
-
-
