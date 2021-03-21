@@ -13,6 +13,7 @@ var listStyle = document.querySelectorAll("li");
 var viewScores = document.getElementById('scoresView');
 var clearScrBtn = document.querySelector("#clearscores");
 var again = document.querySelector("#again");
+var hs = document.querySelector("#hs");
 var validator = document.querySelector("#validator");
 
 // for local storage
@@ -30,26 +31,28 @@ var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
 
 
-var timerInterval;
+
 var timeLeft = 75;
 
 // when user clicks button the timer starts
 startButton.addEventListener("click", quizTime)
 
+viewScores.addEventListener("click", checkif)
 
-viewScores.addEventListener("click", function () {
+function checkif(){
+if (!initialsInput.value){
+    alert("There are no high scores yet!")
+    return;
+}
     if (highScores.style.display === "none") {
         highScores.style.display = "block";
-    } else if (highScores.style.display === "block") {
+        return;
+    } else (highScores.style.display === "block"); {
         highScores.style.display = "none";
-    } else if (!scoreList.value){
-        alert("No scores to show.");
-    }
+        return;
+    }; 
     
-    else {
-        return alert("No scores to show.");
-    }
-});
+};
 
 
 // stores questions as objects
@@ -121,13 +124,13 @@ function checkAnswer(event) {
     // answer checker
     if (questions[questionCount].correctAnswer === event.target.value) {
         validator.style.display = "block";
-        validator.style.color = "green";
-        validator.textContent = "You got it right!"
+        validator.style.color = "rgb(27, 232, 16)";
+        validator.textContent = "You got it right!";
 
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
         validator.style.display = "block";
         validator.style.color = "red";
-        validator.textContent = "You got it wrong!"
+        validator.textContent = "You got it wrong!";
         timeLeft = timeLeft - 10;
     }
 
@@ -206,6 +209,7 @@ function storeScores() {
 
 function displayScores() {
     // Get stored scores from localStorage
+    hs.style.display = "block";
     // Parsing the JSON string to an object
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
@@ -224,6 +228,8 @@ clearScrBtn.addEventListener("click", clearScores);
 function clearScores() {
     localStorage.clear();
     scoreListShow.innerHTML = "";
+    clearscores.style.display = "none";
+    hs.style.display = "none";
 }
 
 
