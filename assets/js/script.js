@@ -164,7 +164,7 @@ function countdown() {
             userResults.style.display = "block";
             questionsText.style.display = "none";
             yourScore.innerHTML = '<p>Game Over! Your score is ' + timeLeft + '</p>';
-        } else if (timeLeft === 0 || questionCount === questions.length) {
+        } else if (timeLeft <= 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
             userResults.style.display = "block";
             questionsText.style.display = "none";
