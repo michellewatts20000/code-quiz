@@ -9,20 +9,18 @@ var userChoice = document.querySelectorAll("button.userChoice");
 var listStyle = document.querySelectorAll("li");
 var viewScores = document.getElementById('scoresView');
 var clearScrBtn = document.querySelector("#clearscores");
-
-var goBackBtn = document.querySelector("#back-btn");
+var again = document.querySelector("#again");
+var validator = document.querySelector("#validator");
 
 // for local storage
 var initialsInput = document.getElementById("msg");
 var saveButton = document.getElementById("save");
 
-// 
-
+// where the li elements will appear
 var scoreListShow = document.querySelector("#score-list");
 
-
 //where the question and answers go
-var questionEl = document.querySelector("#questionHere");
+var questionHere = document.querySelector("#questionHere");
 var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
@@ -82,19 +80,18 @@ function quizTime() {
     setQuestion(questionCount);
 }
 
-function setQuestion(id) {
-    if (id < questions.length) {
-        questionEl.textContent = questions[id].question;
-        answer1.textContent = questions[id].answers[0];
-        answer2.textContent = questions[id].answers[1];
-        answer3.textContent = questions[id].answers[2];
-        answer4.textContent = questions[id].answers[3];
+function setQuestion(i) {
+    if (i < questions.length) {
+        questionHere.textContent = questions[i].question;
+        answer1.textContent = questions[i].answers[0];
+        answer2.textContent = questions[i].answers[1];
+        answer3.textContent = questions[i].answers[2];
+        answer4.textContent = questions[i].answers[3];
     }
 }
 
 
 // make sure user enters their intials
-
 saveButton.addEventListener("click", function () {
     if (!initialsInput.value) {
         alert("you need to enter your initials!")
@@ -103,9 +100,6 @@ saveButton.addEventListener("click", function () {
         addScore();  
     }
 });
-
-
-
 
 
 // when the user clicks an answer for a question run the checkanswer function
@@ -118,9 +112,14 @@ function checkAnswer(event) {
     event.preventDefault();
     // answer checker
     if (questions[questionCount].correctAnswer === event.target.value) {
-
+        validator.style.display = "block";
+        validator.style.color = "green"; 
+        validator.textContent = "You got it right!"
 
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
+        validator.style.display = "block";
+        validator.style.color = "red"; 
+        validator.textContent = "You got it wrong!"
         timeLeft = timeLeft - 10;
     }
 
@@ -160,13 +159,10 @@ var scoreList = [];
 
 function addScore() {
     // event.preventDefault();
-
     userResults.style.display = "none";
     highScores.style.display = "block";
 
-
-
-    let init = initialsInput.value.toUpperCase();
+    var init = initialsInput.value.toUpperCase();
     scoreList.push({
         initials: init,
         score: timeLeft
@@ -230,8 +226,9 @@ function showScores() {
     starterText.style.display = "none";
 }
 
-goBackBtn.addEventListener("click", function () {
+again.addEventListener("click", function () {
     highScores.style.display = "none";
+   validator.style.display = "none";
     starterText.style.display = "block";
     timeLeft = 75;
     timerEl.textContent = timeLeft + " sec";
