@@ -10,6 +10,7 @@ var userResults = document.getElementById('userResults');
 var highScores = document.getElementById('highScores');
 var userChoice = document.querySelectorAll("button.userChoice");
 var listStyle = document.querySelectorAll("li");
+var listStyles = document.querySelectorAll("ol.listStyle");
 var viewScores = document.getElementById('scoresView');
 var clearScrBtn = document.querySelector("#clearscores");
 var again = document.querySelector("#again");
@@ -32,21 +33,28 @@ var answer4 = document.querySelector("#answer4");
 
 
 
-var timeLeft = 75;
+var timeLeft = 60;
 
 // when user clicks button the timer starts
 startButton.addEventListener("click", quizTime)
-
 viewScores.addEventListener("click", checkif)
 
+
+
 function checkif(){
-if (!initialsInput.value){
-    alert("There are no high scores yet!")
-    return;
+    if (!initialsInput.value){
+        alert("There are no high scores yet!")
+        return;
+    }
+
+if(starterText.style.display === "block"){
+    again.style.display = "none";
 }
+
     if (highScores.style.display === "none") {
         highScores.style.display = "block";
         return;
+
     } else (highScores.style.display === "block"); {
         highScores.style.display = "none";
         return;
@@ -172,6 +180,7 @@ function addScore() {
     // event.preventDefault();
     userResults.style.display = "none";
     highScores.style.display = "block";
+    again.style.display = "inline";
 
     var init = initialsInput.value.toUpperCase();
     scoreList.push({
@@ -192,7 +201,7 @@ function addScore() {
     scoreListShow.innerHTML = "";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
-        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
+        li.textContent = `${scoreList[i].initials} ${scoreList[i].score}`;
         scoreListShow.append(li);
 
         li.classList.add("style-list");
@@ -217,6 +226,8 @@ function displayScores() {
     if (storedScoreList !== null) {
         scoreList = storedScoreList;
     }
+
+   
 }
 
 
@@ -228,6 +239,7 @@ clearScrBtn.addEventListener("click", clearScores);
 function clearScores() {
     localStorage.clear();
     scoreListShow.innerHTML = "";
+    initialsInput.innerHTML = "";
     clearscores.style.display = "none";
     hs.style.display = "none";
 }
