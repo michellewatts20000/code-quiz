@@ -41,25 +41,25 @@ viewScores.addEventListener("click", checkif)
 
 
 
-function checkif(){
-    // if (!initialsInput.value){
+function checkif() {
+    // if (storedScoreList === ""){
     //     alert("There are no high scores yet!")
     //     return;
     // }
 
-if(starterText.style.display === "block"){
-    again.style.display = "none";
-}
+    if (starterText.style.display === "block") {
+        again.style.display = "none";
+    }
 
     if (highScores.style.display === "none") {
         highScores.style.display = "block";
         return;
 
-    } else (highScores.style.display === "block"); {
+    } else(highScores.style.display === "block"); {
         highScores.style.display = "none";
         return;
-    }; 
-    
+    };
+
 };
 
 
@@ -147,7 +147,6 @@ function checkAnswer(event) {
         questionCount++;
     }
 
-    // when all the questions are done run the gameOver function
 
     // call setQuestion to bring in next question when any userChoice is clicked
     setQuestion(questionCount);
@@ -203,47 +202,47 @@ function addScore() {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials} ${scoreList[i].score}`;
         scoreListShow.append(li);
-
         li.classList.add("style-list");
     }
 
     // Add to local storage
     storeScores();
-    displayScores();
+
 }
 
 function storeScores() {
     localStorage.setItem("scoreList", JSON.stringify(scoreList));
 }
 
-// function displayScores() {
-//     // Get stored scores from localStorage
-//     hs.style.display = "block";
-    
-//     // Parsing the JSON string to an object
-//     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
-//     // If scores were retrieved from localStorage, update the scorelist array to it
-//     if (storedScoreList !== null) {
-//         scoreList = storedScoreList;
-//     }
+function displayScores() {
+    // Get stored scores from localStorage
+    hs.style.display = "block";
 
-   
-// }
+    // Parsing the JSON string to an object
+    let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+    for (let i = 0; i < storedScoreList.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = `${storedScoreList[i].initials} ${storedScoreList[i].score}`;
+        scoreListShow.append(li);
 
+        li.classList.add("style-list");
+    }
+}
 
+displayScores();
 
 // // Clear the scores
-// clearScrBtn.addEventListener("click", clearScores);
+clearScrBtn.addEventListener("click", clearScores);
 
-// // clear scores
-// function clearScores() {
-//     localStorage.clear();
-//     scoreListShow.innerHTML = "";
-//     initialsInput.value = "";
-//     clearscores.style.display = "none";
-//     hs.style.display = "none";
-// }
+// clear scores
+function clearScores() {
+    localStorage.clear();
+    scoreListShow.innerHTML = "";
+    initialsInput.value = "";
+    // clearscores.style.display = "none";
+    // hs.style.display = "none";
+}
 
 
 // clear scores
