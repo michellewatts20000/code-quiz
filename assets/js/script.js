@@ -45,7 +45,7 @@ viewScores.addEventListener("click", checkif)
 
 
 function checkif() {
-    if (scoreList == null){
+    if ((localStorage.getItem("scoreList") === null)){
         alert("There are no high scores yet!")
         return;
     }
