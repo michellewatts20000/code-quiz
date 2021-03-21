@@ -1,5 +1,6 @@
 // array to store user score and initials
 var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
+var timerInterval;
 
 // Access element by ID using .querySelector()
 var startButton = document.querySelector("#start-timer");
@@ -45,8 +46,13 @@ viewScores.addEventListener("click", checkif)
 
 
 function checkif() {
-    if ((localStorage.getItem("scoreList") === null)){
+    if ((localStorage.getItem("scoreList") === null)) {
         alert("There are no high scores yet!")
+        return;
+    }
+
+    if (starterText.style.display === "none" && questionsText.style.display === "none") {
+        alert("You can already see the high scores!")
         return;
     }
 
@@ -229,7 +235,7 @@ function displayScores() {
     // Parsing the JSON string to an object
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
-    if(storedScoreList === null){
+    if (storedScoreList === null) {
         return;
     }
 
@@ -252,11 +258,15 @@ clearScrBtn.addEventListener("click", clearScores);
 // clear scores
 function clearScores() {
     localStorage.clear();
+    clearInterval(timerInterval);
     scoreListShow.innerHTML = "";
     scoreList = [];
-    clearscores.style.display = "none";
-    hs.style.display = "none";
-    again.style.display = "none";
+    questionsText.style.display = "none";
+    highScores.style.display = "none";
+    timeLeft = 75;
+    timerEl.textContent = timeLeft;
+    // hs.style.display = "none";
+    // again.style.display = "none";
     starterText.style.display = "block";
 }
 
