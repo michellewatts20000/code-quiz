@@ -79,9 +79,9 @@ const questions = [{
         correctAnswer: "2"
     },
     {
-        question: "What does 'Boolean' mean?",
-        answers: ["an object wrapper that contains a 'true' and a 'false'", "a pasta dish", "an insult", "a program that will be able to do your job shortly"],
-        correctAnswer: "1"
+        question: "Which of these is not a Data Type in JavaScript?",
+        answers: ["Boolean", "String", "Function", "Number"],
+        correctAnswer: "3"
     },
     {
         question: "What are the 3 main coding languages of the web?",
@@ -95,7 +95,7 @@ const questions = [{
     },
     {
         question: "Where is JavaScript used?",
-        answers: ["browsers", "servers", "in this webpage", "all of the above"],
+        answers: ["Browsers", "Servers", "In this webpage", "All of the above"],
         correctAnswer: "4"
     }
 ];
