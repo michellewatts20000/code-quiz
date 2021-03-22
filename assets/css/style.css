@@ -10,6 +10,22 @@
 #timer-icon {
   color:#fff;
 }
+/* 
+.btn:focus{
+  outline: none;
+}
+
+.btn-info:not(:disabled):not(.disabled):active {
+
+  background-color: #17a2b8;
+} */
+
+.btn-info:focus {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: none;
+  box-shadow: none;
+}
 
 #timer {
   color:red;
