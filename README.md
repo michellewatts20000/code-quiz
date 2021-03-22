@@ -34,7 +34,7 @@ THEN I can save my initials and my score
 ![screenshot of generator](./assets/img/screenshot-code-quiz.png)
 
 
-As Friedrich W. Nietzsche said:
+As Maya Angelou said:
 
-> Beware that, when fighting monsters,
-> you yourself do not become a monster
+> You may not control all the events that happen to you,
+> but you can decide not to be reduced by them.
