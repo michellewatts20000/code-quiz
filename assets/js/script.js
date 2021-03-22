@@ -140,7 +140,7 @@ userChoice.forEach(item => {
 
 function checkAnswer(event) {
     event.preventDefault();
-    console.log(questionCount);
+    
 
     if (questionCount <= questions.length - 1) {
 

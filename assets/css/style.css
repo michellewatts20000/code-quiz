@@ -14,15 +14,7 @@ body {
 #timer-icon {
   color:#fff;
 }
-/* 
-.btn:focus{
-  outline: none;
-}
 
-.btn-info:not(:disabled):not(.disabled):active {
-
-  background-color: #17a2b8;
-} */
 
 .btn-info:focus {
   color: #fff;
@@ -80,6 +72,7 @@ h3 {
 
 p {
   font-family: 'Roboto', sans-serif;
+  font-size:25px;
 }
 
 #questions ul {
@@ -209,8 +202,20 @@ body {
   }
 
   #timer-icon {
-    margin-bottom:20px;
+    margin-bottom:30px;
   }
+
+#scoresView {
+
+  margin-bottom: 30px;
+
+}
+
+p {
+
+  font-size:20px;
+}
+
 }
 
 /*
