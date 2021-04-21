@@ -1,7 +1,7 @@
 # Code Quiz - submission by Michelle Watts
 
 ## Links
-### Link to the GitHub page is [here](https://michellewatts20000.github.io/code-quiz/)
+### Link to the deployed app is [here](https://michellewatts20000.github.io/code-quiz/)
 ### Link to the GitHub repo is [here](https://github.com/michellewatts20000/code-quiz)
 
 ## Technologies used
