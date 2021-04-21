@@ -1,40 +1,22 @@
 # Code Quiz - submission by Michelle Watts
 
-## User Story
-
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
-
-## Acceptance Criteria
-
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
-
-
 ## Links
 ### Link to the GitHub page is [here](https://michellewatts20000.github.io/code-quiz/)
 ### Link to the GitHub repo is [here](https://github.com/michellewatts20000/code-quiz)
 
+## Technologies used
+HTML, JavaScript, CSS, Bootstrap, JQuery, Open Weather API, FontAwesome and Moment.
 
-  ## Screenshot
+## What the app does
+You have 75 seconds to answer 5 coding questions. Once you have finished the quiz you will be asked to enter your initials to get yourself on the high scores table. If you leave the website you can return and your score will still be there.
+
+## Screenshot
 ![screenshot of generator](./assets/img/screenshot-code-quiz.png)
+![screenshot of generator](./assets/img/screenshot-2.png)
+![screenshot of generator](./assets/img/screenshot-3.png)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-As Maya Angelou said:
-
-> You may not control all the events that happen to you,
-> but you can decide not to be reduced by them.
+## Contact
+Michelle Watts
+watts.e.michelle@gmail.com
